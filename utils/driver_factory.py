@@ -1,14 +1,16 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.chrome.options import Options
+
+CHROME_PATH = r"C:\chromedriver-win64\chromedriver.exe"
 
 
-class DriverFactory:
+def get_driver():
+    options = Options()
+    options.add_argument("--start-maximized")
 
-    @staticmethod
-    def get_driver():
-        service = Service()  # ChromeDriver should be in PATH now
-        options = webdriver.ChromeOptions()
+    service = Service(CHROME_PATH)
+    driver = webdriver.Chrome(service=service, options=options)
+    driver.implicitly_wait(5)
 
-        driver = webdriver.Chrome(service=service, options=options)
-        driver.maximize_window()
-        return driver
+    return driver

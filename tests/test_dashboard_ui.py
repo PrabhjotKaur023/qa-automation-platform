@@ -1,7 +1,7 @@
 from tests.pages.login_page import LoginPage
 
 
-def test_django_admin_login(driver):
+def test_login_and_logout(driver):
     login = LoginPage(driver)
 
     login.open()
