@@ -32,7 +32,15 @@ jobs:
       - name: Setup Database
         run: |
           python manage.py migrate
-          python core/create_superuser.py
+
+          python manage.py shell -c "
+from django.contrib.auth.models import User;
+User.objects.filter(username='admin').exists() or User.objects.create_superuser(
+    'admin',
+    'admin@test.com',
+    'admin@2003K'
+)
+"
 
       - name: Start Django Server
         run: |
