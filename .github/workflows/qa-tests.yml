@@ -4,18 +4,18 @@ on:
   push:
     branches:
       - main
-      - master
 
   pull_request:
     branches:
       - main
-      - master
 
 jobs:
   test:
+
     runs-on: ubuntu-latest
 
     steps:
+
       - name: Checkout Code
         uses: actions/checkout@v4
 
@@ -29,6 +29,23 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: Setup Database
+  run: |
+    python manage.py migrate
+    python core/create_superuser.py
+
+      - name: Start Django Server
+        run: |
+          nohup python manage.py runserver 0.0.0.0:8000 &
+          sleep 10
+
       - name: Run Tests
         run: |
-          pytest -v
+          pytest -v --html=reports/report.html --self-contained-html
+
+      - name: Upload Test Report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pytest-report
+          path: reports/
