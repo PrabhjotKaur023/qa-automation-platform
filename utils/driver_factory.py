@@ -1,16 +1,23 @@
-from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.chrome.options import Options
+import os
 
-CHROME_PATH = r"C:\chromedriver-win64\chromedriver.exe"
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 
 
 def get_driver():
-    options = Options()
-    options.add_argument("--start-maximized")
 
-    service = Service(CHROME_PATH)
-    driver = webdriver.Chrome(service=service, options=options)
-    driver.implicitly_wait(5)
+    options = Options()
+
+    if os.getenv("CI"):
+
+        options.add_argument("--headless=new")
+        options.add_argument("--no-sandbox")
+        options.add_argument("--disable-dev-shm-usage")
+
+    else:
+
+        options.add_argument("--start-maximized")
+
+    driver = webdriver.Chrome(options=options)
 
     return driver
