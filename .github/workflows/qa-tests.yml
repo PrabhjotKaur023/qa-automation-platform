@@ -30,9 +30,9 @@ jobs:
           pip install -r requirements.txt
 
       - name: Setup Database
-  run: |
-    python manage.py migrate
-    python core/create_superuser.py
+        run: |
+          python manage.py migrate
+          python core/create_superuser.py
 
       - name: Start Django Server
         run: |
