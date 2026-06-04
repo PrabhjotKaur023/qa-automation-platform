@@ -1,0 +1,9 @@
+2026-06-04 17:05:54,240 - INFO - Starting Dashboard Test
+2026-06-04 17:06:03,367 - INFO - Starting Login Test
+2026-06-04 17:15:10,362 - INFO - Starting Dashboard Test
+2026-06-04 17:15:11,745 - INFO - User Logged In Successfully
+2026-06-04 17:15:11,760 - INFO - Dashboard Test Passed
+2026-06-04 17:15:15,617 - INFO - Starting Login Test
+2026-06-04 17:15:15,764 - INFO - Opened Admin Page
+2026-06-04 17:15:16,612 - INFO - Login Attempt Completed
+2026-06-04 17:15:16,616 - INFO - Login Test Passed
