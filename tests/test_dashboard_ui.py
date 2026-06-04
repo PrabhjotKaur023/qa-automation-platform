@@ -1,19 +1,22 @@
 from tests.pages.login_page import LoginPage
+from utils.data_reader import get_login_data
 from utils.logger import get_logger
 
 logger = get_logger()
 
 
-def test_login_and_logout(driver):
+def test_login_and_logout(driver, env):
 
-    logger.info("Starting Dashboard Test")
+    data = get_login_data()
 
     login = LoginPage(driver)
 
-    login.open()
-    login.login("admin", "admin@2003K")
+    login.open(env)
 
-    logger.info("User Logged In Successfully")
+    login.login(
+        data["username"],
+        data["password"]
+    )
 
     assert "logout" in driver.page_source.lower()
 
