@@ -1,0 +1,1 @@
+[32mINFO    [0m QA_Automation:test_dashboard_ui.py:23 Dashboard Test Passed

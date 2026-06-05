@@ -1,0 +1,2 @@
+[32mINFO    [0m QA_Automation:test_login_ui.py:12 Starting Login Test
+[32mINFO    [0m QA_Automation:test_login_ui.py:25 Login Test Passed
